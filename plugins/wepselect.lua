@@ -13,16 +13,6 @@ if (CLIENT) then
 
 	local matrixScale = Vector(1, 1, 0)
 
-	function PLUGIN:LoadFonts(font, genericFont)
-		surface.CreateFont("ixWeaponSelectFont", {
-			font = "Roboto",
-			size = 42,
-			weight = 100,
-			shadow = true,
-			extended = true
-		})
-	end
-
 	function PLUGIN:HUDShouldDraw(name)
 		if (name == "CHudWeaponSelection") then
 			return false

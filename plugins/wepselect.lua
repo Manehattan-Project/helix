@@ -15,10 +15,11 @@ if (CLIENT) then
 
 	function PLUGIN:LoadFonts(font, genericFont)
 		surface.CreateFont("ixWeaponSelectFont", {
-			font = font,
-			size = ScreenScale(16),
-			extended = true,
-			weight = 1000
+			font = "Roboto",
+			size = 42,
+			weight = 100,
+			shadow = true,
+			extended = true
 		})
 	end
 

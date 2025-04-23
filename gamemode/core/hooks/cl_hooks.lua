@@ -1,4 +1,3 @@
-
 function GM:ForceDermaSkin()
 	return "helix"
 end
@@ -584,40 +583,6 @@ function GM:HUDPaintBackground()
 	end
 
 	self.BaseClass:PaintWorldTips()
-
-	local weapon = client:GetActiveWeapon()
-
-	if (IsValid(weapon) and hook.Run("CanDrawAmmoHUD", weapon) != false and weapon.DrawAmmo != false) then
-		local clip = weapon:Clip1()
-		local clipMax = weapon:GetMaxClip1()
-		local count = client:GetAmmoCount(weapon:GetPrimaryAmmoType())
-		local secondary = client:GetAmmoCount(weapon:GetSecondaryAmmoType())
-		local x, y = scrW - 80, scrH - 80
-
-		if (secondary > 0) then
-			ix.util.DrawBlurAt(x, y, 64, 64)
-
-			surface.SetDrawColor(255, 255, 255, 5)
-			surface.DrawRect(x, y, 64, 64)
-			surface.SetDrawColor(255, 255, 255, 3)
-			surface.DrawOutlinedRect(x, y, 64, 64)
-
-			ix.util.DrawText(secondary, x + 32, y + 32, nil, 1, 1, "ixBigFont")
-		end
-
-		if (weapon:GetClass() != "weapon_slam" and clip > 0 or count > 0) then
-			x = x - (secondary > 0 and 144 or 64)
-
-			ix.util.DrawBlurAt(x, y, 128, 64)
-
-			surface.SetDrawColor(255, 255, 255, 5)
-			surface.DrawRect(x, y, 128, 64)
-			surface.SetDrawColor(255, 255, 255, 3)
-			surface.DrawOutlinedRect(x, y, 128, 64)
-
-			ix.util.DrawText((clip == -1 or clipMax == -1) and count or clip.."/"..count, x + 64, y + 32, nil, 1, 1, "ixBigFont")
-		end
-	end
 
 	if (client:GetLocalVar("restricted") and !client:GetLocalVar("restrictNoMsg")) then
 		ix.util.DrawText(L"restricted", scrW * 0.5, scrH * 0.33, nil, 1, 1, "ixBigFont")
